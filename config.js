@@ -6,7 +6,7 @@ window.SITE_CONFIG = {
   base: "Tokyo, Japan", // 活動拠点（未確定）
 
   // 問い合わせ先メール（フォームが使えない時の予備）
-  email: "booking@example.com",
+  email: "loversgreen0914@gmail.com",
 
   // Formspree（https://formspree.io）で発行したエンドポイント。
   // 空のままだとフォーム送信時にメールアプリが開きます。
@@ -14,9 +14,9 @@ window.SITE_CONFIG = {
 
   // SNS。空欄のものは表示されません。
   sns: {
-    instagram: "",
+    instagram: "https://www.instagram.com/lovers__green/",
     x: "",
-    tiktok: "",
+    tiktok: "https://www.tiktok.com/@lovers__green",
     youtube: "",
     soundcloud: "",
     mixcloud: "",
