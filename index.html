@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LOVER'S GREEN | Reggae Sound System &amp; DJ</title>
+  <meta name="description" content="レゲエサウンドシステム / DJ「LOVER'S GREEN」公式サイト。出演スケジュール、主催イベント、Mix、ブッキングのご依頼はこちら。">
+  <meta name="theme-color" content="#0d1a12">
+
+  <!-- OGP（SNSでシェアされた時の表示） -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LOVER'S GREEN | Reggae Sound System &amp; DJ">
+  <meta property="og:description" content="出演スケジュール、主催イベント、ブッキングのご依頼はこちら。">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="logo" href="#top">LOVER'S <span>GREEN</span></a>
+  <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" aria-label="メイン">
+    <a href="#about">About</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#events">Events</a>
+    <a href="#mix">Mix</a>
+    <a href="#vision">Vision</a>
+    <a href="#booking" class="nav-cta">Booking</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-speakers" aria-hidden="true">
+      <div class="speaker"></div><div class="speaker"></div><div class="speaker"></div>
+    </div>
+    <div class="hero-inner">
+      <p class="eyebrow" data-config="base"></p>
+      <h1>LOVER'S<br><span>GREEN</span></h1>
+      <p class="hero-sub">Reggae Sound System &amp; DJ</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#schedule">次のイベントを見る</a>
+        <a class="btn btn-ghost" href="#booking">出演を依頼する</a>
+      </div>
+      <div class="next-event" id="next-event" hidden></div>
+    </div>
+    <div class="stripe" aria-hidden="true"><i></i><i></i><i></i></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>音で人をつなぐ<br>サウンドシステム</h2>
+      </div>
+      <div class="prose">
+        <p><!-- TODO: 本人の言葉で書き換える -->LOVER'S GREENは、レゲエのDJとサウンドシステムとして活動しています。クラブ、野外、カフェなど場所を問わず、その日の客層に合わせて選曲します。</p>
+        <p>ルーツ、ラバーズロック、ダンスホールまで。初めてレゲエを聴く人も、長く聴いてきた人も一緒に揺れられる時間をつくります。</p>
+        <ul class="tags">
+          <li>Roots</li><li>Lovers Rock</li><li>Dancehall</li><li>Dub</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="section section-dark" id="schedule">
+    <div class="container">
+      <p class="eyebrow">Schedule</p>
+      <h2>出演スケジュール</h2>
+      <div class="filter" role="tablist">
+        <button class="is-active" data-filter="upcoming">Upcoming</button>
+        <button data-filter="past">Past</button>
+      </div>
+      <ol class="event-list" id="event-list"></ol>
+    </div>
+  </section>
+
+  <!-- TICKETS（将来機能。config.features.tickets=trueで表示） -->
+  <section class="section" id="tickets" hidden>
+    <div class="container">
+      <p class="eyebrow">Tickets</p>
+      <h2>前売りチケット・予約</h2>
+      <p class="lead">各イベントの「チケット」ボタンから購入できます。</p>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="section" id="events">
+    <div class="container">
+      <p class="eyebrow">Our Events</p>
+      <h2>主催イベント</h2>
+      <div class="cards" id="series"></div>
+    </div>
+  </section>
+
+  <!-- MIX -->
+  <section class="section section-dark" id="mix">
+    <div class="container">
+      <p class="eyebrow">Mix</p>
+      <h2>まずは音を聴いてください</h2>
+      <div class="mixes" id="mixes"></div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="section section-vision" id="vision">
+    <div class="container">
+      <p class="eyebrow">Vision</p>
+      <h2>Road to<br>LOVER'S GREEN FESTIVAL</h2>
+      <p class="lead">目標は、大規模なレゲエフェスを自分たちで開催すること。一回一回の現場がその準備です。</p>
+      <ol class="roadmap">
+        <li><b>STEP 1</b><span>DJ / サウンドとして各地の現場に出る</span></li>
+        <li><b>STEP 2</b><span>主催パーティーを定期開催にする</span></li>
+        <li><b>STEP 3</b><span>野外・デイイベントへ拡大</span></li>
+        <li><b>STEP 4</b><span>LOVER'S GREEN FESTIVAL 開催</span></li>
+      </ol>
+      <p class="lead small">フェスの最新情報はSNSで最初に発表します。</p>
+    </div>
+  </section>
+
+  <!-- FOLLOW -->
+  <section class="section section-follow" id="follow">
+    <div class="container center">
+      <p class="eyebrow">Follow</p>
+      <h2>SNSで最新情報を受け取る</h2>
+      <div class="sns" id="sns"></div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="section" id="booking">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">Booking &amp; Contact</p>
+        <h2>出演依頼・<br>お問い合わせ</h2>
+        <p class="prose">クラブ、フェス、野外イベント、店舗、プライベートパーティーまで対応します。日程と場所が決まっていなくても、まずはご相談ください。</p>
+        <p class="prose small">メール：<a id="email-link" href="#"></a></p>
+        <p id="epk" hidden><a class="btn btn-ghost" target="_blank" rel="noopener">プレスキット（EPK）</a></p>
+      </div>
+      <form class="form" id="booking-form">
+        <label><span>お名前 / 団体名 <em>必須</em></span><input name="name" required></label>
+        <label><span>メールアドレス <em>必須</em></span><input type="email" name="email" required></label>
+        <label>ご依頼の種類
+          <select name="type">
+            <option>出演依頼（クラブ / バー）</option>
+            <option>出演依頼（フェス / 野外）</option>
+            <option>サウンドシステム貸出</option>
+            <option>プライベートパーティー</option>
+            <option>取材・メディア</option>
+            <option>その他</option>
+          </select>
+        </label>
+        <div class="row">
+          <label>希望日<input type="date" name="date"></label>
+          <label>エリア / 会場<input name="venue"></label>
+        </div>
+        <label><span>内容 <em>必須</em></span><textarea name="message" rows="5" required></textarea></label>
+        <button class="btn btn-primary" type="submit">送信する</button>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <a class="logo" href="#top">LOVER'S <span>GREEN</span></a>
+    <div class="sns small" id="sns-footer"></div>
+    <p class="copy">&copy; <span id="year"></span> LOVER'S GREEN</p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="events.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
