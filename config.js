@@ -3,7 +3,7 @@
 window.SITE_CONFIG = {
   name: "LOVER'S GREEN",
   tagline: "Reggae Sound System & DJ",
-  base: "Tokyo, Japan", // 活動拠点（未確定）
+  base: "From Chigasaki, Shonan",
 
   // 問い合わせ先メール（フォームが使えない時の予備）
   email: "loversgreen0914@gmail.com",

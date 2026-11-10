@@ -43,6 +43,7 @@
       <div class="event-date"><span class="md">${md}</span><span class="y">${d.getFullYear()} ${WD[d.getDay()]}</span></div>
       <div><p class="event-title">${badge}${esc(e.title)}</p><p class="event-meta">${meta}${lineup}</p>${e.note ? `<p class="event-note">${esc(e.note)}</p>` : ""}</div>
       <div class="event-actions">${acts.join("")}</div>
+      ${e.flyer ? `<a href="${esc(e.flyer)}" target="_blank" rel="noopener"><img class="event-flyer" src="${esc(e.flyer)}" alt="${esc(e.title)} flyer" loading="lazy"></a>` : ""}
     </li>`;
   }
   function renderEvents(which) {
@@ -57,7 +58,15 @@
       renderEvents(b.dataset.filter);
     })
   );
-  renderEvents("upcoming");
+  const startTab = upcoming.length ? "upcoming" : "past";
+  document.querySelectorAll(".filter button").forEach((x) => x.classList.toggle("is-active", x.dataset.filter === startTab));
+  renderEvents(startTab);
+
+  // Flyer archive (新しい順)
+  $("#flyers").innerHTML = EVENTS.filter((e) => e.flyer)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .map((e) => `<a href="${esc(e.flyer)}" target="_blank" rel="noopener"><img src="${esc(e.flyer)}" alt="${esc(e.title)}" loading="lazy"><span>${esc(e.date.replace(/-/g, "."))}</span></a>`)
+    .join("");
 
   // Next event + countdown
   const next = upcoming[0];
