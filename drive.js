@@ -11,6 +11,7 @@
   const truck = $("drive-truck"), title = $("drive-title"), caption = $("drive-caption");
   const endBox = $("drive-end"), bar = $("drive-bar"), hint = $("drive-hint");
   const wheels = truck.querySelectorAll(".wheel");
+  const box = document.getElementById("tr-box"), crane = document.getElementById("tr-crane");
 
   const shows = (window.EVENTS || []).filter((e) => e.flyer).sort((a, b) => a.date.localeCompare(b.date));
   const n = shows.length;
@@ -32,7 +33,8 @@
 
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const smooth = (a, b, v) => { const t = clamp((v - a) / (b - a)); return t * t * (3 - 2 * t); };
-  const T_START = 0.05, T_END = 0.86;   // フライヤーが流れる区間
+  const T_LOAD = 0.08, T_LIFT = 0.12; // 最初にクレーンでコンテナを積む区間
+  const T_START = 0.13, T_END = 0.86;   // フライヤーが流れる区間
   const INTRO_MS = 1900;
   let introStart = performance.now();
   let vw = 0, vh = 0, gap = 0, bw = 0, wheelR = 0, lastActive = -1, ticking = false;
@@ -76,9 +78,20 @@
 
     // 最後はトラックが右へ走り去る
     const exit = smooth(T_END + 0.02, 1, p);
-    const k = clamp((performance.now() - introStart) / INTRO_MS);
-    const intro = (1 - k) ** 3; // 1→0 で減速しながら到着
-    const truckX = exit * exit * vw * 1.1 - intro * vw * 0.95;
+    const truckX = exit * exit * vw * 1.1;
+
+    // 積み込み：クレーンが吊ったコンテナを荷台に下ろし、クレーンは上へ戻る
+    const L = smooth(0, T_LOAD, p);
+    const svgScale = (truck.querySelector("svg").getBoundingClientRect().width || 900) / 1400;
+    const drop = (1 - L) * Math.min(vh * 0.22, 170) / svgScale; // 画面上で最大170pxぶん上から下ろす
+    const sway = Math.sin(L * Math.PI * 3) * (1 - L) * 2.5;
+    if (box) box.setAttribute("transform", `translate(0 ${-drop}) rotate(${sway} 430 40)`);
+    if (crane) {
+      const lift = smooth(T_LOAD, T_LIFT, p) * 900;
+      crane.setAttribute("transform", `translate(0 ${-drop - lift}) rotate(${sway} 430 40)`);
+      crane.setAttribute("opacity", p < T_LIFT ? 1 : 0);
+    }
+    truck.classList.toggle("is-loading", L < 1);
     truck.style.setProperty("--tx", `${truckX}px`);
     const deg = ((-x + truckX) / wheelR) * (180 / Math.PI);
     wheels.forEach((w) => (w.style.transform = `rotate(${deg}deg)`));
@@ -92,8 +105,8 @@
     }
     setCaption(active);
 
-    title.style.opacity = 1 - smooth(0.005, 0.05, p);
-    title.style.transform = `translateY(${-smooth(0, 0.06, p) * 40}px)`;
+    title.style.opacity = 1 - smooth(T_LOAD, T_START, p);
+    title.style.transform = `translateY(${-smooth(T_LOAD, T_START, p) * 40}px)`;
     hint.style.opacity = 1 - smooth(0.0, 0.03, p);
     const endOn = smooth(T_END + 0.05, 0.99, p);
     endBox.style.opacity = endOn;
@@ -108,8 +121,5 @@
   window.addEventListener("resize", () => { setHeight(); measure(); });
   window.addEventListener("load", measure);
   measure();
-  // 最初にトラックが左から走ってくる（タイヤも回る）
-  introStart = reduce ? -INTRO_MS : performance.now();
-  const introLoop = () => { update(); if (performance.now() - introStart < INTRO_MS + 50) requestAnimationFrame(introLoop); };
-  requestAnimationFrame(introLoop);
+  requestAnimationFrame(update);
 })();

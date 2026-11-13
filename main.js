@@ -34,7 +34,8 @@
     const d = new Date(e.date + "T00:00:00");
     const md = String(d.getMonth() + 1).padStart(2, "0") + "." + String(d.getDate()).padStart(2, "0");
     const badge = e.type === "own" ? '<span class="badge badge-own">主催</span>' : '<span class="badge badge-guest">出演</span>';
-    const meta = [e.open && "OPEN " + e.open, e.venue, e.city, e.price].filter(Boolean).map(esc).join(" / ");
+    const time = e.open ? (e.close ? `${e.open}-${e.close}` : "OPEN " + e.open) : "";
+    const meta = [time, e.venue, e.city, e.price].filter(Boolean).map(esc).join(" / ");
     const lineup = e.lineup && e.lineup.length ? "<br>Lineup: " + e.lineup.map(esc).join(", ") : "";
     const acts = [];
     if (!isPast && e.ticketUrl && C.features && C.features.tickets) acts.push(`<a class="btn btn-primary" href="${esc(e.ticketUrl)}" target="_blank" rel="noopener">チケット</a>`);

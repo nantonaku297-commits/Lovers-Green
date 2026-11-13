@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Jost:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261114">
+  <link rel="stylesheet" href="style.css?v=20261114b">
   <style>html,body{overflow-x:clip}[hidden]:not([hidden=until-found i]){display:none!important}</style>
 </head>
 <body>
@@ -120,6 +120,7 @@
             <!-- ===== トレーラー ===== -->
             <rect x="40" y="330" width="790" height="22" rx="4" fill="#2b1d17"/>
             <rect x="700" y="350" width="14" height="52" fill="#4a3a33"/><rect x="690" y="398" width="34" height="8" rx="2" fill="#4a3a33"/>
+            <g id="tr-box">
             <g clip-path="url(#boxClip)">
               <rect x="20" y="60" width="820" height="90" fill="#d40303"/>
               <rect x="20" y="150" width="820" height="90" fill="#e2b72a"/>
@@ -136,10 +137,18 @@
               <circle cx="60" cy="72" r="2"/><circle cx="140" cy="72" r="2"/><circle cx="220" cy="72" r="2"/><circle cx="640" cy="72" r="2"/><circle cx="720" cy="72" r="2"/><circle cx="800" cy="72" r="2"/>
               <circle cx="60" cy="318" r="2"/><circle cx="140" cy="318" r="2"/><circle cx="220" cy="318" r="2"/><circle cx="640" cy="318" r="2"/><circle cx="720" cy="318" r="2"/><circle cx="800" cy="318" r="2"/>
             </g>
+            <text x="812" y="314" text-anchor="end" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="22" fill="#fff6e0" stroke="#2b1d17" stroke-width="0.8" paint-order="stroke">Sound System</text>
+            </g>
+            <!-- クレーン（読み込み時にコンテナを吊って載せる） -->
+            <g id="tr-crane" opacity="0">
+              <path d="M330 -2000 V30 M530 -2000 V30" stroke="#2b1d17" stroke-width="4"/>
+              <rect x="200" y="28" width="460" height="16" rx="4" fill="#e8742a" stroke="#2b1d17" stroke-width="2"/>
+              <path d="M240 44 v12 M620 44 v12" stroke="#2b1d17" stroke-width="6" stroke-linecap="round"/>
+              <rect x="400" y="6" width="60" height="24" rx="5" fill="#2b1d17"/>
+            </g>
             <g fill="#f3a63a" stroke="#2b1d17" stroke-width="0.8">
               <rect x="120" y="340" width="10" height="6" rx="2"/><rect x="420" y="340" width="10" height="6" rx="2"/><rect x="760" y="340" width="10" height="6" rx="2"/>
             </g>
-            <text x="812" y="314" text-anchor="end" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="22" fill="#fff6e0" stroke="#2b1d17" stroke-width="0.8" paint-order="stroke">Sound System</text>
             <!-- マッドフラップ -->
             <path d="M282 350 h22 v62 q0 6 -6 6 h-10 q-6 0 -6 -6z" fill="#2b1d17"/>
             <rect x="286" y="392" width="14" height="6" rx="2" fill="url(#chrome)"/>
@@ -444,10 +453,10 @@
   </div>
 </footer>
 
-<script src="config.js?v=20261114"></script>
-<script src="events.js?v=20261114"></script>
-<script src="main.js?v=20261114"></script>
-<script src="drive.js?v=20261114"></script>
-<script src="bass.js?v=20261114"></script>
+<script src="config.js?v=20261114b"></script>
+<script src="events.js?v=20261114b"></script>
+<script src="main.js?v=20261114b"></script>
+<script src="drive.js?v=20261114b"></script>
+<script src="bass.js?v=20261114b"></script>
 </body>
 </html>

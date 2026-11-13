@@ -572,3 +572,8 @@ h2 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
 .reels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 340px)); gap: 18px; margin-bottom: 18px; }
 .reel { background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid rgba(43,29,23,.22); }
 .reel iframe { display: block; width: 100%; height: 620px; border: 0; }
+
+/* 積み込み演出：PCではタイトルを右に寄せて、吊られたコンテナと重ならないようにする */
+@media (min-width: 821px) {
+  .drive-title { left: auto; right: 6vw; text-align: right; }
+}
