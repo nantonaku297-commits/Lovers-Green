@@ -575,5 +575,5 @@ h2 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
 
 /* 積み込み演出：PCではタイトルを右に寄せて、吊られたコンテナと重ならないようにする */
 @media (min-width: 821px) {
-  .drive-title { left: auto; right: 6vw; text-align: right; }
+  .drive-title { left: auto; right: 6vw; text-align: right; top: max(120px, 16vh); }
 }
