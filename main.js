@@ -129,6 +129,20 @@
   $("#sns").innerHTML = snsHtml || '<p class="small">SNSアカウントは準備中です。</p>';
   $("#sns-footer").innerHTML = snsHtml;
 
+  // Rentalボタン → フォームの種類を「サウンドシステム貸出」に
+  document.querySelectorAll("[data-rental]").forEach((a) =>
+    a.addEventListener("click", () => { $("#booking-form select[name=type]").value = "サウンドシステム貸出"; })
+  );
+
+  // ---------- Reveal on scroll ----------
+  const targets = document.querySelectorAll(".section .container > *, .event, .flyers a, .card");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+    }), { rootMargin: "0px 0px -8% 0px" });
+    targets.forEach((t) => { t.classList.add("reveal"); io.observe(t); });
+  }
+
   // ---------- Booking form ----------
   const form = $("#booking-form"), status = $("#form-status");
   form.addEventListener("submit", async (ev) => {

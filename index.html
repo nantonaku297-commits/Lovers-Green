@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LOVER'S GREEN | Reggae Sound System &amp; DJ</title>
   <meta name="description" content="レゲエサウンドシステム / DJ「LOVER'S GREEN」公式サイト。出演スケジュール、主催イベント、Mix、ブッキングのご依頼はこちら。">
-  <meta name="theme-color" content="#0d1a12">
+  <meta name="theme-color" content="#08120c">
 
   <!-- OGP（SNSでシェアされた時の表示） -->
   <meta property="og:type" content="website">
@@ -18,7 +18,7 @@
   <link rel="apple-touch-icon" href="icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho+B1:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,6 +32,7 @@
     <a href="#about">About</a>
     <a href="#schedule">Schedule</a>
     <a href="#events">Events</a>
+    <a href="#rental">Rental</a>
     <a href="#mix">Mix</a>
     <a href="#vision">Vision</a>
     <a href="#booking" class="nav-cta">Booking</a>
@@ -41,19 +42,18 @@
 <main>
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-speakers" aria-hidden="true">
-      <div class="speaker"></div><div class="speaker"></div><div class="speaker"></div>
-    </div>
+    <div class="hero-rings" aria-hidden="true"></div>
     <div class="hero-inner">
       <p class="eyebrow" data-config="base"></p>
       <h1>LOVER'S<br><span>GREEN</span></h1>
       <p class="hero-sub">Reggae Sound System &amp; DJ</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#schedule">次のイベントを見る</a>
-        <a class="btn btn-ghost" href="#booking">出演を依頼する</a>
+        <a class="btn btn-primary btn-jp" href="#schedule">次のイベントを見る</a>
+        <a class="btn btn-ghost btn-jp" href="#booking">出演を依頼する</a>
       </div>
       <div class="next-event" id="next-event" hidden></div>
     </div>
+    <div class="scroll-cue" aria-hidden="true">Scroll</div>
     <div class="stripe" aria-hidden="true"><i></i><i></i><i></i></div>
   </section>
 
@@ -108,6 +108,22 @@
     </div>
   </section>
 
+  <!-- RENTAL -->
+  <section class="section" id="rental">
+    <div class="container">
+      <p class="eyebrow">Sound System Rental</p>
+      <h2>サウンドシステム貸出</h2>
+      <p class="lead">LOVER'S GREENのサウンドシステムを貸し出しています。パーティー、野外イベント、店舗イベントなど、レゲエの鳴りをそのまま現場に持ち込めます。</p>
+      <div class="rental-grid">
+        <div><b>Party &amp; Club</b><p>クラブやバーでの主催パーティーに。</p></div>
+        <div><b>Outdoor &amp; Festival</b><p>野外イベントやデイイベントに。</p></div>
+        <div><b>Private &amp; Shop</b><p>店舗イベントやプライベートパーティーに。</p></div>
+      </div>
+      <p class="prose small">機材内容・料金・搬入出はご相談ください。日程とエリアが分かればスムーズです。</p>
+      <p><a class="btn btn-ghost btn-jp" href="#booking" data-rental>貸出について問い合わせる</a></p>
+    </div>
+  </section>
+
   <!-- MIX -->
   <section class="section section-dark" id="mix">
     <div class="container">
@@ -121,7 +137,7 @@
   <section class="section section-vision" id="vision">
     <div class="container">
       <p class="eyebrow">Vision</p>
-      <h2>Road to<br>LOVER'S GREEN FESTIVAL</h2>
+      <h2>Road to<br><em>LOVER'S GREEN</em> FESTIVAL</h2>
       <p class="lead">目標は、大規模なレゲエフェスを自分たちで開催すること。一回一回の現場がその準備です。</p>
       <ol class="roadmap">
         <li class="done"><b>STEP 1 / NOW</b><span>茅ヶ崎で主催パーティーを続ける</span></li>
@@ -170,7 +186,7 @@
           <label>エリア / 会場<input name="venue"></label>
         </div>
         <label><span>内容 <em>必須</em></span><textarea name="message" rows="5" required></textarea></label>
-        <button class="btn btn-primary" type="submit">送信する</button>
+        <button class="btn btn-primary btn-jp" type="submit">送信する</button>
         <p class="form-status" id="form-status" role="status"></p>
       </form>
     </div>
