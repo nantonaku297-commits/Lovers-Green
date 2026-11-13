@@ -22,8 +22,9 @@
     </figure>`).join("");
   const boards = [...track.querySelectorAll(".board")];
 
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (reduce.matches || !n) { section.classList.add("is-static"); return; }
+  // 「視差効果を減らす」設定のPCでも、スクロールに合わせて動く演出は見せる（自動で走る導入だけ省く）
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!n) { section.classList.add("is-static"); return; }
 
   // スクロールの長さ：フライヤー1枚につき画面0.45枚分
   const setHeight = () => { section.style.height = `${Math.round((1.5 + n * 0.45) * 100)}svh`; };
@@ -108,7 +109,7 @@
   window.addEventListener("load", measure);
   measure();
   // 最初にトラックが左から走ってくる（タイヤも回る）
-  introStart = performance.now();
+  introStart = reduce ? -INTRO_MS : performance.now();
   const introLoop = () => { update(); if (performance.now() - introStart < INTRO_MS + 50) requestAnimationFrame(introLoop); };
   requestAnimationFrame(introLoop);
 })();
