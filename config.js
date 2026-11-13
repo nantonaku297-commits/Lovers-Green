@@ -30,7 +30,7 @@ window.SITE_CONFIG = {
 
   // Instagramのリール動画。URLを追加するとMix欄に並びます。
   videos: [
-    "https://www.instagram.com/reel/Dbpd-C0RRCP/"
+    // "https://www.instagram.com/reel/xxxxxxxx/"
   ],
 
   // プレスキット（EPK）のPDFなど。空なら非表示。
