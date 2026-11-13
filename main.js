@@ -129,19 +129,43 @@
   $("#sns").innerHTML = snsHtml || '<p class="small">SNSアカウントは準備中です。</p>';
   $("#sns-footer").innerHTML = snsHtml;
 
-  // Rentalボタン → フォームの種類を「サウンドシステム貸出」に
-  document.querySelectorAll("[data-rental]").forEach((a) =>
-    a.addEventListener("click", () => { $("#booking-form select[name=type]").value = "サウンドシステム貸出"; })
+
+  // ---------- Rental ----------
+  const R = C.rental;
+  if (R) {
+    $("#rental-lead").textContent = R.lead || "";
+    $("#rental-scenes").innerHTML = (R.scenes || []).map((x) => `<li>${esc(x)}</li>`).join("");
+    const priceRow = (x) => `<li><span class="pl-name">${esc(x.name)}<small>${esc(x.detail || "")}</small></span><span class="pl-dots"></span><b>${esc(x.price)}</b></li>`;
+    $("#rental-sets").innerHTML = (R.sets || []).map(priceRow).join("");
+    $("#rental-items").innerHTML = (R.items || []).map(priceRow).join("");
+    if (R.pa) {
+      $("#rental-pa-price").textContent = R.pa.price || "";
+      $("#rental-pa-desc").textContent = R.pa.desc || "";
+      $("#rental-pa").innerHTML = (R.pa.items || []).map((x) => `<li>${esc(x)}</li>`).join("");
+    }
+    $("#rental-for").innerHTML = (R.forWho || []).map((x) => `<li>${esc(x)}</li>`).join("");
+    const photos = R.photos || [];
+    $("#rental-photos").innerHTML = photos.length
+      ? photos.map((p) => `<a href="${esc(p.src)}" target="_blank" rel="noopener"><img src="${esc(p.src)}" alt="${esc(p.alt || "機材写真")}" loading="lazy"></a>`).join("")
+      : ["Speaker", "DJ Controller", "Mixer"].map((t) => `<div class="photo-soon"><b>${t}</b><span>写真 準備中</span></div>`).join("");
+    const dm = $("#rental-dm");
+    if (R.dm) dm.href = R.dm; else dm.remove();
+    $("#rental-note").textContent = R.note || "";
+  } else {
+    $("#rental").hidden = true;
+  }
+
+  // 「フォームで問い合わせる」で依頼の種類を自動選択
+  document.querySelectorAll("[data-booking-type]").forEach((a) =>
+    a.addEventListener("click", () => {
+      const sel = document.querySelector('#booking-form select[name="type"]');
+      if (sel) sel.value = a.dataset.bookingType;
+    })
   );
 
-  // ---------- Reveal on scroll ----------
-  const targets = document.querySelectorAll(".section .container > *, .event, .flyers a, .card");
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver((es) => es.forEach((e) => {
-      if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
-    }), { rootMargin: "0px 0px -8% 0px" });
-    targets.forEach((t) => { t.classList.add("reveal"); io.observe(t); });
-  }
+  // ---------- Instagram ----------
+  const ig = (C.sns || {}).instagram;
+  if (ig) { $("#ig-phone").href = ig; $("#ig-handle").href = ig; }
 
   // ---------- Booking form ----------
   const form = $("#booking-form"), status = $("#form-status");

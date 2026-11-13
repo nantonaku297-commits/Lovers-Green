@@ -11,7 +11,9 @@ Reggae Sound System & DJ「LOVER'S GREEN」の公式サイト。GitHub Pagesで�
 | SNSリンク・メール・Mix | `config.js` |
 | 文章（About など） | `index.html` |
 | 色・デザイン | `style.css` |
-| 機材貸出の文章 | `index.html` の Rental |
+| 機材レンタルの料金・機材 | `config.js` の `rental` |
+| トップのトラック演出 | `drive.js`（フライヤーは `events.js` から自動） |
+| Mix欄の揺れる波形 | `bass.js`（`config.js` の `features.bassFx` でON/OFF） |
 
 日付が過ぎたイベントは自動で「Past」に移動します。
 
