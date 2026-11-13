@@ -108,9 +108,11 @@
 
   // ---------- Mix ----------
   const mixes = C.mixEmbeds || [];
-  $("#mixes").innerHTML = mixes.length
-    ? mixes.map((u) => `<iframe loading="lazy" allow="autoplay" src="${esc(u)}" title="Mix"></iframe>`).join("")
-    : '<div class="placeholder">Mix 準備中。SoundCloud / Mixcloud の埋め込みURLを config.js に追加すると表示されます。</div>';
+  const videos = (C.videos || []).map((u) => u.split("?")[0].replace(/\/?$/, "/"));
+  const reelHtml = videos.map((u) => `<div class="reel"><iframe loading="lazy" src="${esc(u)}embed/" title="Instagram Reel" allowtransparency="true" allow="encrypted-media; picture-in-picture" scrolling="no"></iframe></div>`).join("");
+  const mixHtml = mixes.map((u) => `<iframe loading="lazy" allow="autoplay" src="${esc(u)}" title="Mix"></iframe>`).join("");
+  $("#mixes").innerHTML = (reelHtml ? `<div class="reels">${reelHtml}</div>` : "") + (mixHtml ||
+    '<div class="placeholder">Mix 準備中。SoundCloud / Mixcloud の埋め込みURLを config.js に追加すると表示されます。</div>');
 
   // ---------- SNS ----------
   const ICON = {

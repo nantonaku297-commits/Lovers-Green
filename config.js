@@ -28,6 +28,11 @@ window.SITE_CONFIG = {
     // "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/xxxx/xxxx"
   ],
 
+  // Instagramのリール動画。URLを追加するとMix欄に並びます。
+  videos: [
+    "https://www.instagram.com/reel/Dbpd-C0RRCP/"
+  ],
+
   // プレスキット（EPK）のPDFなど。空なら非表示。
   epkUrl: "",
 
